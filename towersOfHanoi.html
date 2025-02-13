@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JavaScript 
+        function towersOfHanoi(n, source, target, auxiliary) {             // this function moves n disks from source using auxiliary as a helper
+            if (n === 1) {                                                 // If there is only 1 disk, move it directly. This is where recursion stops; no further calls happen. 
+                console.log(`Move disk 1 from ${source} to ${target}`);
+                return;
+            }
+
+            towersOfHanoi(n - 1, source, auxiliary, target);               // Disks are moved to auxiliary, one disk at a time, using target as a helper
+                                                                           
+            console.log(`Move disk ${n} from ${source} to ${target}`);     // Largest disk is moved directly to target, after three smallest disks has moved
+
+            towersOfHanoi(n - 1, auxiliary, target, source);               // Three smallest disks are moved to target, one disk at a time, using source as a helper
+        }
+        towersOfHanoi(4, "A", "C", "B");                                   //function call - move 4 disks from A to C, using B as a helper
+
+        
+    </script>
+    
+</body>
+</html>
